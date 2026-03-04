@@ -1,0 +1,26 @@
+public class BubbleSortingImplementation {
+	public static void bubbleSort(int[] arr) {
+
+		bool neededSwap = true;
+		int maxIndex = arr.length - 1;
+		int edge = maxIndex - 1;
+	
+		while(neededSwap) {
+			neededSwap = false;
+			for (int i = 0; i <= edge; i++) {
+				if (arr[i] > arr[i+1]) {
+					int holder = arr[i+1];
+					arr[i+1] = arr[i];
+					arr[i] = holder;
+					neededSwap = true;
+				}
+				edge--;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+	
+		}
+
+}
