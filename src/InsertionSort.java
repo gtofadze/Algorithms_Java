@@ -2,7 +2,7 @@ public static void insertionSort(int[] arr) {
 
     int maxIndex = arr.length - 1;
 
-    for (int edge = 0; edge < maxIndex - 1; edge++) {
+    for (int edge = 0; edge < maxIndex; edge++) {
 
         int keyIndex = edge + 1;
         int keyValue = arr[keyIndex];
