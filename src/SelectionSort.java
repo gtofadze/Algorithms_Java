@@ -2,7 +2,7 @@ public static void SelectionSort(int[] arr) {
 
     int len = arr.length;
 
-    for (int min = 0; min < (len - 2); min++) {
+    for (int min = 0; min < (len - 1); min++) {
         for (int j = min + 1;  j < len; j++) {
             if (arr[j] < arr[min]) {
                 int holder = arr[min];
