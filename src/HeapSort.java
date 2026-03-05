@@ -1,6 +1,40 @@
 public static void HeapSort(int[] arr) {
+    // [1 2 3 4 5 6 7 8 9]
+    int len = arr.length;
 
+    for (int i = len; i > 1; i--) {
+        toHeap(arr, i);
+        int holder = arr[i-1];
+        arr[i-1] = arr[0];
+        arr[0] = holder;
+    }
+}
 
+public static void toHeap(int[] arr, int size) {
+
+    // if heap tree starts from 0:
+    // last parent = i/2
+    // right child = i*2 + 1
+    // left child = i*2
+
+    int last = size / 2;
+
+    for (int i = last; i > 0; i--) {
+
+        //comparing to right child
+        if (i*2+1 <= size && arr[i*2] > arr[i-1]) {
+            int holder = arr[i-1];
+            arr[i-1] = arr[i*2];
+            arr[i*2] = holder;
+        }
+
+        //comparing to left child
+        if (arr[i*2-1] > arr[i-1]) {
+            int holder = arr[i-1];
+            arr[i-1] = arr[i*2];
+            arr[i*2] = holder;
+        }
+    }
 }
 
 void main() {
