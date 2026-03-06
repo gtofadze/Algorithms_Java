@@ -1,9 +1,9 @@
 public static void HeapSort(int[] arr) {
-	len = arr.length;
-	lastParent = len / 2 - 1;
+	int len = arr.length;
+	int lastParent = len / 2 - 1;
 	
-	for (int i = len - 1, i >= 0; i--) {
-		heapify(arr, i, maxIdx);
+	for (int i = lastParent; i >= 0; i--) {
+		heapify(arr, i, len);
 	}
 
 	for (int i = len - 1; i > 0; i--) {
@@ -11,7 +11,7 @@ public static void HeapSort(int[] arr) {
 		arr[0] = arr[i];
 		arr[i] = holder;
 
-		heapify(arr, 0, i);
+		heapify(arr,0, i);
 	}
 }
 
@@ -33,7 +33,7 @@ public static void heapify(int[] arr, int i, int len) {
 		arr[largest] = arr[i];
 		arr[i] = holder;
 
-		heapify(arr, largest, len)
+		heapify(arr, largest, len);
 	}
 }
 
