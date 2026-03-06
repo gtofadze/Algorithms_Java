@@ -1,40 +1,40 @@
 public static void HeapSort(int[] arr) {
-    // [1 2 3 4 5 6 7 8 9]
-    int len = arr.length;
+	len = arr.length;
+	lastParent = len / 2 - 1;
+	
+	for (int i = len - 1, i >= 0; i--) {
+		heapify(arr, i, maxIdx);
+	}
 
-    for (int i = len; i > 1; i--) {
-        toHeap(arr, i);
-        int holder = arr[i-1];
-        arr[i-1] = arr[0];
-        arr[0] = holder;
-    }
+	for (int i = len - 1; i > 0; i--) {
+		int holder = arr[0];
+		arr[0] = arr[i];
+		arr[i] = holder;
+
+		heapify(arr, 0, i);
+	}
 }
 
-public static void toHeap(int[] arr, int size) {
+public static void heapify(int[] arr, int i, int len) {
+	int left = i * 2 + 1;
+	int right = i * 2 + 2;
+	int largest = i;
+	
+	if (right < len && arr[right] > arr[largest]) {
+		largest = right;
+	}
 
-    // if heap tree starts from 0:
-    // last parent = i/2
-    // right child = i*2 + 1
-    // left child = i*2
+	if (left < len && arr[left] > arr[largest]) {
+		largest = left;
+	}
 
-    int last = size / 2;
+	if (largest != i) {
+		int holder = arr[largest];
+		arr[largest] = arr[i];
+		arr[i] = holder;
 
-    for (int i = last; i > 0; i--) {
-
-        //comparing to right child
-        if (i*2+1 <= size && arr[i*2] > arr[i-1]) {
-            int holder = arr[i-1];
-            arr[i-1] = arr[i*2];
-            arr[i*2] = holder;
-        }
-
-        //comparing to left child
-        if (arr[i*2-1] > arr[i-1]) {
-            int holder = arr[i-1];
-            arr[i-1] = arr[i*2];
-            arr[i*2] = holder;
-        }
-    }
+		heapify(arr, largest, len)
+	}
 }
 
 void main() {
